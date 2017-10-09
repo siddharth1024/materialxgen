@@ -193,7 +193,7 @@ var colorScheme = "AdobeColors";
 
 $('#action-refresh').click(function (e) {
     e.preventDefault();
-    m.applySettings();
+    paintAndAnimate();
 });
 
 function setupDropdown() {
