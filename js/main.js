@@ -171,6 +171,19 @@ function easeOutCubic(t) {
     return (--t) * t * t + 1
 }
 
+function paintAndAnimate() {
+    if (mobile) {
+        multiplyFactor = 1;
+        time = 1;
+    } else {
+        multiplyFactor = 0;
+        time = 0;
+        reqAnimFrame(animate);
+    }
+    m.applySettings();
+    updateGlobalAccent();
+}
+
 window.onload = function () {
     docWidth = document.body.clientWidth;
     docHeight = document.body.clientHeight;
@@ -193,18 +206,7 @@ window.onload = function () {
     updateGlobalAccent();
     updateLightSourceButtonsColors();
 
-    document.getElementById("backyard").addEventListener('click', function () {
-        if (mobile) {
-            multiplyFactor = 1;
-            time = 1;
-        } else {
-            multiplyFactor = 0;
-            time = 0;
-            reqAnimFrame(animate);
-        }
-        m.applySettings();
-        updateGlobalAccent();
-    });
+    document.getElementById("backyard").addEventListener('click', paintAndAnimate);
 
     document.getElementById("download-1920").addEventListener('click', function () {
         performDownload(this, 1920, 1080);
